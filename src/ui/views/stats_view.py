@@ -51,6 +51,7 @@ from src.domain.money import Money
 from src.i18n import money_label, t
 from src.ui.calendar_theme import theme_date_edit
 from src.ui.chart_theme import style_axis, style_chart, thin_axis_labels
+from src.ui.message_box import ask_yes_no
 from src.ui.table_style import apply_column_widths, style_data_table
 from src.ui.theme import current_palette
 from src.ui.themed_combo import ThemedComboBox
@@ -752,12 +753,7 @@ class StatsView(QWidget):
         )
         if not path:
             return
-        answer = QMessageBox.question(
-            self,
-            t("common.app_name"),
-            t("stats.msg.import_confirm"),
-        )
-        if answer != QMessageBox.StandardButton.Yes:
+        if not ask_yes_no(self, t("stats.msg.import_confirm")):
             return
         try:
             result = self._export.import_csv(Path(path))

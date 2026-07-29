@@ -24,6 +24,7 @@ from src.application.expense_service import ExpenseService, PreferencesService
 from src.domain.errors import DomainError
 from src.domain.money import Money
 from src.i18n import money_label, t
+from src.ui.message_box import ask_yes_no
 from src.ui.table_style import apply_column_widths, style_data_table
 from src.ui.views.expense_dialog import ExpenseDialog
 
@@ -340,12 +341,7 @@ class ExpensesView(QWidget):
                 self, t("common.app_name"), t("expenses.msg.select_row")
             )
             return
-        if (
-            QMessageBox.question(
-                self, t("common.app_name"), t("expenses.msg.confirm_delete")
-            )
-            != QMessageBox.StandardButton.Yes
-        ):
+        if not ask_yes_no(self, t("expenses.msg.confirm_delete")):
             return
         try:
             self._expenses.delete_expense(self._ids[row])

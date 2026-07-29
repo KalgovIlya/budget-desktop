@@ -5,6 +5,8 @@ from __future__ import annotations
 EN: dict[str, str] = {
     # common
     "common.cancel": "Cancel",
+    "common.yes": "Yes",
+    "common.no": "No",
     "common.em_dash": "—",
     "common.app_name": "Budget",
     # main
@@ -258,6 +260,8 @@ EN: dict[str, str] = {
 
 RU: dict[str, str] = {
     "common.cancel": "Отмена",
+    "common.yes": "Да",
+    "common.no": "Нет",
     "common.em_dash": "—",
     "common.app_name": "Budget",
     "main.subtitle": "Учёт расходов",

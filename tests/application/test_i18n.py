@@ -12,6 +12,15 @@ def test_t_switches_with_locale():
     assert t("main.tab.expenses") == "Траты"
 
 
+def test_yes_no_localized():
+    set_locale("en")
+    assert t("common.yes") == "Yes"
+    assert t("common.no") == "No"
+    set_locale("ru")
+    assert t("common.yes") == "Да"
+    assert t("common.no") == "Нет"
+
+
 def test_t_fallback_to_english_key():
     set_locale("ru")
     # Unknown key falls back to key itself if missing in both
