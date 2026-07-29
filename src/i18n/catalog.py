@@ -1,0 +1,511 @@
+from __future__ import annotations
+
+# English is the fallback catalog. Keys must exist in both where possible.
+
+EN: dict[str, str] = {
+    # common
+    "common.cancel": "Cancel",
+    "common.em_dash": "—",
+    "common.app_name": "Budget",
+    # main
+    "main.subtitle": "Expense tracker",
+    "main.tab.expenses": "Expenses",
+    "main.tab.stats": "Stats",
+    "main.tab.budgets": "Budgets",
+    "main.tab.catalogs": "Catalogs",
+    "main.theme.light": "Light",
+    "main.theme.dark": "Dark",
+    "main.theme.label": "Theme: {name}",
+    "main.lang.label": "Language: {name}",
+    "main.lang.en": "English",
+    "main.lang.ru": "Русский",
+    # expenses
+    "expenses.title": "Expenses",
+    "expenses.hint": "Entries within retention · Ctrl+N new · Ctrl+F search",
+    "expenses.search.placeholder": "Search by merchant, category, person, amount…",
+    "expenses.search.tooltip": "Search (Ctrl+F)",
+    "expenses.btn.add": "+ Add",
+    "expenses.btn.add.tooltip": "New expense (Ctrl+N)",
+    "expenses.recent.caption": "Recent",
+    "expenses.col.date": "Date",
+    "expenses.col.amount": "Amount",
+    "expenses.col.person": "Who",
+    "expenses.col.category": "Category",
+    "expenses.col.merchant": "Merchant",
+    "expenses.col.note": "Note",
+    "expenses.empty.title": "No expenses yet",
+    "expenses.empty.body_no_data": (
+        "Create a person and a category in Catalogs,\n"
+        "then press “+ Add” below or Ctrl+N."
+    ),
+    "expenses.empty.search_title": "Nothing found",
+    "expenses.empty.search_body": "Change the query or clear search.",
+    "expenses.btn.repeat": "Repeat",
+    "expenses.btn.edit": "Edit",
+    "expenses.btn.delete": "Delete",
+    "expenses.msg.select_row": "Select a row in the table",
+    "expenses.msg.confirm_delete": "Delete this expense?",
+    "expenses.msg.repeat_person_archived": "Cannot repeat: person is archived",
+    "expenses.msg.repeat_category_archived": "Cannot repeat: category is archived",
+    "expenses.msg.repeat_merchant_archived": "Cannot repeat: merchant is archived",
+    # expense dialog
+    "expense_dialog.title.edit": "Expense",
+    "expense_dialog.title.repeat": "Repeat expense",
+    "expense_dialog.title.new": "New expense",
+    "expense_dialog.merchant.placeholder": "Select or type a merchant",
+    "expense_dialog.field.amount": "Amount",
+    "expense_dialog.field.date": "Date",
+    "expense_dialog.field.person": "Who",
+    "expense_dialog.field.category": "Category",
+    "expense_dialog.field.merchant": "Merchant / payee",
+    "expense_dialog.field.note": "Note",
+    "expense_dialog.btn.save": "Save",
+    "expense_dialog.err.need_person_category": (
+        "Create a person and a category in Catalogs first"
+    ),
+    # stats
+    "stats.period.this_month": "This month",
+    "stats.period.prev_month": "Last month",
+    "stats.period.last_30_days": "Last 30 days",
+    "stats.period.custom": "Custom range",
+    "stats.merchant_search.placeholder": "Search merchant…",
+    "stats.include_archived": "Include archived",
+    "stats.compare": "Compare with previous",
+    "stats.mode.list": "List",
+    "stats.mode.chart": "Chart",
+    "stats.mode.merchants": "By merchant",
+    "stats.mode.dynamics": "Trends",
+    "stats.meta.records": "Records: {count}",
+    "stats.meta.records_compare": (
+        "Records: {count} · was {was} ({date_from}–{date_to}) · {delta}"
+    ),
+    "stats.col.date": "Date",
+    "stats.col.amount": "Amount",
+    "stats.col.person": "Who",
+    "stats.col.category": "Category",
+    "stats.col.merchant": "Merchant",
+    "stats.compare.col.name": "Name",
+    "stats.compare.col.was": "Was",
+    "stats.compare.col.became": "Now",
+    "stats.compare.col.delta_money": "Δ",
+    "stats.compare.col.delta_pct": "Δ %",
+    "stats.btn.apply": "Apply",
+    "stats.btn.reset_filters": "Reset filters",
+    "stats.btn.export_csv": "Export CSV",
+    "stats.btn.import_csv": "Import CSV",
+    "stats.btn.backup": "Backup DB",
+    "stats.section.period": "Period",
+    "stats.section.people": "Who",
+    "stats.section.categories": "Categories",
+    "stats.section.merchants": "Merchants",
+    "stats.section.service": "Data",
+    "stats.empty.no_people": "No people — create them in Catalogs",
+    "stats.empty.no_categories": "No categories — create them in Catalogs",
+    "stats.suffix.archived": " (archived)",
+    "stats.chart.by_category": "By category",
+    "stats.chart.grain_weeks": "week",
+    "stats.chart.grain_days": "day",
+    "stats.chart.by_grain": "By {grain}",
+    "stats.dialog.export_title": "Export CSV",
+    "stats.dialog.import_title": "Import CSV",
+    "stats.msg.saved": "Saved: {path}",
+    "stats.msg.import_confirm": (
+        "Import will fully replace current data.\n\n"
+        "All people, categories, merchants, and expenses will be deleted,\n"
+        "then loaded from the selected CSV.\n\n"
+        "Continue?"
+    ),
+    "stats.msg.imported_rows": "Imported rows: {count}",
+    "stats.msg.error_count": "Errors: {count}",
+    "stats.msg.error_row": "  row {row}: {message}",
+    "stats.msg.error_more": "  … and {count} more",
+    "stats.msg.backup_done": "Backup: {path}",
+    # budgets
+    "budgets.cell.tooltip": "Double-click → amount → Enter. Empty clears the limit.",
+    "budgets.title": "Budgets",
+    "budgets.hint": (
+        "Limit: double-click the “Limit” column, enter an amount and press Enter. "
+        "Clear the cell to remove the limit."
+    ),
+    "budgets.col.category": "Category",
+    "budgets.col.limit": "Limit",
+    "budgets.col.fact": "Spent",
+    "budgets.col.remaining": "Left",
+    "budgets.col.pct": "%",
+    "budgets.empty.no_categories": "No categories — create them in Catalogs.",
+    "budgets.period.current_month": "Current month: {month}",
+    "budgets.card.limits": "Limits",
+    "budgets.card.fact": "Spent on limits",
+    "budgets.card.remaining": "Left",
+    "budgets.card.over": "Over budget",
+    "budgets.card.no_limit": "No limit",
+    "budgets.status.over_count": "{n} cat.",
+    "budgets.status.ok": "on track",
+    "budgets.status.no_limits": "no limits",
+    # catalogs
+    "catalogs.show_archived": "Show archived",
+    "catalogs.title": "Catalogs",
+    "catalogs.subtitle": "People, categories, and merchants",
+    "catalogs.section.people": "People",
+    "catalogs.section.categories": "Categories",
+    "catalogs.section.merchants": "Merchants / payees",
+    "catalogs.btn.add": "Add",
+    "catalogs.btn.rename": "Rename",
+    "catalogs.btn.archive": "Archive",
+    "catalogs.btn.unarchive": "Unarchive",
+    "catalogs.btn.delete": "Delete",
+    "catalogs.btn.merge": "Merge",
+    "catalogs.suffix.archived": " · archived",
+    "catalogs.dialog.person_title": "Person",
+    "catalogs.dialog.person_name": "Name:",
+    "catalogs.dialog.person_rename": "New name:",
+    "catalogs.dialog.category_title": "Category",
+    "catalogs.dialog.category_name": "Name:",
+    "catalogs.dialog.category_rename": "New name:",
+    "catalogs.dialog.merchant_title": "Merchant / payee",
+    "catalogs.dialog.merchant_display_name": "Display name:",
+    "catalogs.msg.need_category": "Create a category first",
+    "catalogs.msg.select_two_merchants": (
+        "Select at least two merchants in the same category (Ctrl+click)"
+    ),
+    # merchant dialog
+    "merchant_dialog.title": "New merchant / payee",
+    "merchant_dialog.name.placeholder": "e.g. Corner Store",
+    "merchant_dialog.field.category": "Category",
+    "merchant_dialog.field.name": "Name",
+    "merchant_dialog.btn.add": "Add",
+    "merchant_dialog.err.need_category": "Select a category",
+    "merchant_dialog.err.need_name": "Enter a merchant name",
+    # merchant merge
+    "merchant_merge.title": "Merge merchants",
+    "merchant_merge.field.survivor": "Keep as primary",
+    "merchant_merge.field.display_name": "Display name",
+    "merchant_merge.btn.merge": "Merge",
+    "merchant_merge.err.need_survivor": "Select the primary merchant",
+    "merchant_merge.err.need_name": "Enter a display name",
+    # months
+    "month.1": "January",
+    "month.2": "February",
+    "month.3": "March",
+    "month.4": "April",
+    "month.5": "May",
+    "month.6": "June",
+    "month.7": "July",
+    "month.8": "August",
+    "month.9": "September",
+    "month.10": "October",
+    "month.11": "November",
+    "month.12": "December",
+    "month.label": "{month} {year}",
+    # errors / domain
+    "err.category_not_found": "Category not found",
+    "err.person_not_found": "Person not found",
+    "err.merchant_not_found": "Merchant not found",
+    "err.expense_not_found": "Expense not found",
+    "err.person_archived": "Person is archived",
+    "err.category_archived": "Category is archived",
+    "budget.err.archived_limit": "Cannot set a limit on an archived category",
+    "budget.err.limit_positive": "Limit must be greater than zero",
+    "budget.fallback_category_name": "category",
+    "budget.warn.over_limit": (
+        "Category “{name}” is over budget.\n"
+        "Limit: {lim}, spent in {month}: {fact} (over by {over}).\n"
+        "Expense saved."
+    ),
+    "catalog.err.person_name_empty": "Person name cannot be empty",
+    "catalog.err.person_exists": "A person with this name already exists",
+    "catalog.err.person_archived_use": "Person is archived — unarchive in Catalogs",
+    "catalog.err.delete_in_use_expenses": (
+        "Cannot delete: linked expenses exist. Use archive instead."
+    ),
+    "catalog.err.category_name_empty": "Category name cannot be empty",
+    "catalog.err.category_exists": "A category with this name already exists",
+    "catalog.err.category_archived_use": (
+        "Category is archived — unarchive in Catalogs"
+    ),
+    "catalog.err.delete_category_has_merchants": (
+        "Cannot delete: this category has merchants. "
+        "Delete or move them first."
+    ),
+    "catalog.err.merchant_name_empty": "Merchant name cannot be empty",
+    "catalog.err.merchant_exists": "A merchant with this key already exists",
+    "catalog.err.merge_need_sources": "Select at least one other merchant to merge",
+    "catalog.err.merge_same_category": "Can only merge merchants in the same category",
+    "catalog.err.merchant_required": "Specify a merchant / payee",
+    "catalog.err.merchant_archived_use": (
+        "Merchant is archived — unarchive in Catalogs"
+    ),
+    "catalog.err.merchant_wrong_category": (
+        "Merchant “{display_name}” belongs to category “{category_name}”, "
+        "not the selected one"
+    ),
+    "filter.err.date_range": "Start date cannot be after end date",
+    "filter.err.merchant_xor": (
+        "Select merchants with checkboxes or search by name, not both"
+    ),
+    "export.err.file_not_found": "File not found",
+    "export.err.csv_empty": "CSV is empty",
+    "export.err.csv_header": "Invalid CSV header. Expected: {header}",
+    "export.err.bad_date": "Invalid date (need YYYY-MM-DD)",
+    "compare.pct.new": "new",
+    "compare.total_delta": "Δ {sign}{money} ({pct})",
+    "compare.total_delta_zero": "Δ0.00 (0%)",
+    "money.err.positive": "Amount must be greater than zero",
+    "money.err.empty": "Enter an amount",
+    "money.err.invalid": "Invalid amount",
+    "merchant.err.empty_normalized": "Merchant name is empty after normalization",
+}
+
+RU: dict[str, str] = {
+    "common.cancel": "Отмена",
+    "common.em_dash": "—",
+    "common.app_name": "Budget",
+    "main.subtitle": "Учёт расходов",
+    "main.tab.expenses": "Траты",
+    "main.tab.stats": "Статистика",
+    "main.tab.budgets": "Бюджеты",
+    "main.tab.catalogs": "Справочники",
+    "main.theme.light": "Светлая",
+    "main.theme.dark": "Тёмная",
+    "main.theme.label": "Тема: {name}",
+    "main.lang.label": "Язык: {name}",
+    "main.lang.en": "English",
+    "main.lang.ru": "Русский",
+    "expenses.title": "Траты",
+    "expenses.hint": "Операции за период хранения · Ctrl+N новая · Ctrl+F поиск",
+    "expenses.search.placeholder": "Поиск по месту, категории, человеку, сумме…",
+    "expenses.search.tooltip": "Поиск (Ctrl+F)",
+    "expenses.btn.add": "+ Добавить",
+    "expenses.btn.add.tooltip": "Новая трата (Ctrl+N)",
+    "expenses.recent.caption": "Недавние",
+    "expenses.col.date": "Дата",
+    "expenses.col.amount": "Сумма",
+    "expenses.col.person": "Кто",
+    "expenses.col.category": "Категория",
+    "expenses.col.merchant": "Место",
+    "expenses.col.note": "Коммент",
+    "expenses.empty.title": "Пока нет трат",
+    "expenses.empty.body_no_data": (
+        "Создайте человека и категорию во вкладке «Справочники»,\n"
+        "затем нажмите «+ Добавить» внизу или Ctrl+N."
+    ),
+    "expenses.empty.search_title": "Ничего не найдено",
+    "expenses.empty.search_body": "Измените запрос или очистите поиск.",
+    "expenses.btn.repeat": "Повторить",
+    "expenses.btn.edit": "Изменить",
+    "expenses.btn.delete": "Удалить",
+    "expenses.msg.select_row": "Выберите строку в таблице",
+    "expenses.msg.confirm_delete": "Удалить трату?",
+    "expenses.msg.repeat_person_archived": "Нельзя повторить: человек в архиве",
+    "expenses.msg.repeat_category_archived": "Нельзя повторить: категория в архиве",
+    "expenses.msg.repeat_merchant_archived": "Нельзя повторить: место в архиве",
+    "expense_dialog.title.edit": "Трата",
+    "expense_dialog.title.repeat": "Повтор траты",
+    "expense_dialog.title.new": "Новая трата",
+    "expense_dialog.merchant.placeholder": "Выберите или введите место",
+    "expense_dialog.field.amount": "Сумма",
+    "expense_dialog.field.date": "Дата",
+    "expense_dialog.field.person": "Кто",
+    "expense_dialog.field.category": "Категория",
+    "expense_dialog.field.merchant": "Место / получатель",
+    "expense_dialog.field.note": "Комментарий",
+    "expense_dialog.btn.save": "Сохранить",
+    "expense_dialog.err.need_person_category": (
+        "Сначала создайте человека и категорию в справочниках"
+    ),
+    "stats.period.this_month": "Этот месяц",
+    "stats.period.prev_month": "Прошлый месяц",
+    "stats.period.last_30_days": "Последние 30 дней",
+    "stats.period.custom": "Произвольный период",
+    "stats.merchant_search.placeholder": "Поиск места…",
+    "stats.include_archived": "Включая архивные",
+    "stats.compare": "Сравнить с прошлым",
+    "stats.mode.list": "Список",
+    "stats.mode.chart": "График",
+    "stats.mode.merchants": "По местам",
+    "stats.mode.dynamics": "Динамика",
+    "stats.meta.records": "Записей: {count}",
+    "stats.meta.records_compare": (
+        "Записей: {count} · было {was} ({date_from}–{date_to}) · {delta}"
+    ),
+    "stats.col.date": "Дата",
+    "stats.col.amount": "Сумма",
+    "stats.col.person": "Кто",
+    "stats.col.category": "Категория",
+    "stats.col.merchant": "Место",
+    "stats.compare.col.name": "Имя",
+    "stats.compare.col.was": "Было",
+    "stats.compare.col.became": "Стало",
+    "stats.compare.col.delta_money": "Δ",
+    "stats.compare.col.delta_pct": "Δ %",
+    "stats.btn.apply": "Применить",
+    "stats.btn.reset_filters": "Сбросить фильтры",
+    "stats.btn.export_csv": "Экспорт CSV",
+    "stats.btn.import_csv": "Импорт CSV",
+    "stats.btn.backup": "Бэкап БД",
+    "stats.section.period": "Период",
+    "stats.section.people": "Кто",
+    "stats.section.categories": "Категории",
+    "stats.section.merchants": "Места",
+    "stats.section.service": "Сервис",
+    "stats.empty.no_people": "Нет людей — создайте в справочниках",
+    "stats.empty.no_categories": "Нет категорий — создайте в справочниках",
+    "stats.suffix.archived": " (архив)",
+    "stats.chart.by_category": "По категориям",
+    "stats.chart.grain_weeks": "неделям",
+    "stats.chart.grain_days": "дням",
+    "stats.chart.by_grain": "По {grain}",
+    "stats.dialog.export_title": "Экспорт CSV",
+    "stats.dialog.import_title": "Импорт CSV",
+    "stats.msg.saved": "Сохранено: {path}",
+    "stats.msg.import_confirm": (
+        "Импорт полностью заменит текущие данные.\n\n"
+        "Все люди, категории, места и траты будут удалены,\n"
+        "затем загружены из выбранного CSV.\n\n"
+        "Продолжить?"
+    ),
+    "stats.msg.imported_rows": "Импортировано строк: {count}",
+    "stats.msg.error_count": "Ошибок: {count}",
+    "stats.msg.error_row": "  строка {row}: {message}",
+    "stats.msg.error_more": "  … и ещё {count}",
+    "stats.msg.backup_done": "Бэкап: {path}",
+    "budgets.cell.tooltip": (
+        "Двойной клик по ячейке → сумма → Enter. Пусто — без лимита."
+    ),
+    "budgets.title": "Бюджеты",
+    "budgets.hint": (
+        "Лимит: двойной клик по колонке «Лимит», введите сумму и Enter. "
+        "Очистите ячейку, чтобы убрать лимит."
+    ),
+    "budgets.col.category": "Категория",
+    "budgets.col.limit": "Лимит",
+    "budgets.col.fact": "Факт",
+    "budgets.col.remaining": "Остаток",
+    "budgets.col.pct": "%",
+    "budgets.empty.no_categories": (
+        "Нет категорий — создайте их во вкладке «Справочники»."
+    ),
+    "budgets.period.current_month": "Текущий месяц: {month}",
+    "budgets.card.limits": "Лимиты",
+    "budgets.card.fact": "Факт по лимитам",
+    "budgets.card.remaining": "Остаток",
+    "budgets.card.over": "Превышение",
+    "budgets.card.no_limit": "Без лимита",
+    "budgets.status.over_count": "{n} кат.",
+    "budgets.status.ok": "в норме",
+    "budgets.status.no_limits": "нет лимитов",
+    "catalogs.show_archived": "Показать архивные",
+    "catalogs.title": "Справочники",
+    "catalogs.subtitle": "Люди, категории и места",
+    "catalogs.section.people": "Люди",
+    "catalogs.section.categories": "Категории",
+    "catalogs.section.merchants": "Места / получатели",
+    "catalogs.btn.add": "Добавить",
+    "catalogs.btn.rename": "Переименовать",
+    "catalogs.btn.archive": "В архив",
+    "catalogs.btn.unarchive": "Из архива",
+    "catalogs.btn.delete": "Удалить",
+    "catalogs.btn.merge": "Объединить",
+    "catalogs.suffix.archived": " · архив",
+    "catalogs.dialog.person_title": "Человек",
+    "catalogs.dialog.person_name": "Имя:",
+    "catalogs.dialog.person_rename": "Новое имя:",
+    "catalogs.dialog.category_title": "Категория",
+    "catalogs.dialog.category_name": "Название:",
+    "catalogs.dialog.category_rename": "Новое название:",
+    "catalogs.dialog.merchant_title": "Место / получатель",
+    "catalogs.dialog.merchant_display_name": "Отображаемое имя:",
+    "catalogs.msg.need_category": "Сначала создайте категорию",
+    "catalogs.msg.select_two_merchants": (
+        "Выделите минимум два места одной категории (Ctrl+клик)"
+    ),
+    "merchant_dialog.title": "Новое место / получатель",
+    "merchant_dialog.name.placeholder": "Например: Пятёрочка",
+    "merchant_dialog.field.category": "Категория",
+    "merchant_dialog.field.name": "Название",
+    "merchant_dialog.btn.add": "Добавить",
+    "merchant_dialog.err.need_category": "Выберите категорию",
+    "merchant_dialog.err.need_name": "Введите название места",
+    "merchant_merge.title": "Объединить места",
+    "merchant_merge.field.survivor": "Оставить как основное",
+    "merchant_merge.field.display_name": "Отображаемое имя",
+    "merchant_merge.btn.merge": "Объединить",
+    "merchant_merge.err.need_survivor": "Выберите основное место",
+    "merchant_merge.err.need_name": "Введите отображаемое имя",
+    "month.1": "январь",
+    "month.2": "февраль",
+    "month.3": "март",
+    "month.4": "апрель",
+    "month.5": "май",
+    "month.6": "июнь",
+    "month.7": "июль",
+    "month.8": "август",
+    "month.9": "сентябрь",
+    "month.10": "октябрь",
+    "month.11": "ноябрь",
+    "month.12": "декабрь",
+    "month.label": "{month} {year}",
+    "err.category_not_found": "Категория не найдена",
+    "err.person_not_found": "Человек не найден",
+    "err.merchant_not_found": "Место не найдено",
+    "err.expense_not_found": "Трата не найдена",
+    "err.person_archived": "Человек в архиве",
+    "err.category_archived": "Категория в архиве",
+    "budget.err.archived_limit": "Нельзя задать лимит архивной категории",
+    "budget.err.limit_positive": "Лимит должен быть больше нуля",
+    "budget.fallback_category_name": "категория",
+    "budget.warn.over_limit": (
+        "Лимит категории «{name}» превышен.\n"
+        "Лимит: {lim}, факт за {month}: {fact} "
+        "(свыше на {over}).\n"
+        "Трата сохранена."
+    ),
+    "catalog.err.person_name_empty": "Имя человека не может быть пустым",
+    "catalog.err.person_exists": "Человек с таким именем уже есть",
+    "catalog.err.person_archived_use": (
+        "Человек в архиве — разархивируйте в справочнике"
+    ),
+    "catalog.err.delete_in_use_expenses": (
+        "Нельзя удалить: есть связанные траты. Используйте архив."
+    ),
+    "catalog.err.category_name_empty": "Название категории не может быть пустым",
+    "catalog.err.category_exists": "Категория с таким именем уже есть",
+    "catalog.err.category_archived_use": (
+        "Категория в архиве — разархивируйте в справочнике"
+    ),
+    "catalog.err.delete_category_has_merchants": (
+        "Нельзя удалить: есть места в этой категории. "
+        "Сначала удалите или перенесите места."
+    ),
+    "catalog.err.merchant_name_empty": "Название места не может быть пустым",
+    "catalog.err.merchant_exists": "Место с таким ключом уже есть",
+    "catalog.err.merge_need_sources": (
+        "Выберите хотя бы одно другое место для объединения"
+    ),
+    "catalog.err.merge_same_category": (
+        "Можно объединять только места одной категории"
+    ),
+    "catalog.err.merchant_required": "Укажите место / получателя",
+    "catalog.err.merchant_archived_use": (
+        "Место в архиве — разархивируйте в справочнике"
+    ),
+    "catalog.err.merchant_wrong_category": (
+        "Место «{display_name}» привязано к категории «{category_name}», "
+        "а не к выбранной"
+    ),
+    "filter.err.date_range": "Дата «с» не может быть позже даты «по»",
+    "filter.err.merchant_xor": (
+        "Выберите либо места галочками, либо поиск по названию"
+    ),
+    "export.err.file_not_found": "Файл не найден",
+    "export.err.csv_empty": "CSV пустой",
+    "export.err.csv_header": "Неверный заголовок CSV. Ожидается: {header}",
+    "export.err.bad_date": "Некорректная дата (нужен YYYY-MM-DD)",
+    "compare.pct.new": "нов.",
+    "compare.total_delta": "Δ {sign}{money} ({pct})",
+    "compare.total_delta_zero": "Δ 0.00 (0%)",
+    "money.err.positive": "Сумма должна быть больше нуля",
+    "money.err.empty": "Введите сумму",
+    "money.err.invalid": "Некорректная сумма",
+    "merchant.err.empty_normalized": "Название места пустое после нормализации",
+}
